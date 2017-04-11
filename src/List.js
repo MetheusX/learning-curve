@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { fetchItems } from './api';
 
 const Ul = styled.ul`
   margin: 0;
@@ -19,16 +20,46 @@ const Item = styled.li`
 `;
 
 export default class List extends Component {
+  state = {
+    isLoading : true,
+    visibilityFilter : '',
+    items : []
+  }
+  componentDidMount = () =>
+    fetchItems()
+      .then(response =>
+        this.setState({
+          items : response.data,
+          isLoading : false
+        })
+      )
+      .catch((e) => console.log(e));
+  onChangeFilterHandler = (e) => {
+    this.setState({
+      visibilityFilter: e.target.value
+    });
+  }
   render() {
+    let filteredList = this.state.items.filter(item =>
+      item.name.indexOf(this.state.visibilityFilter) !== -1
+    )
+
     return (
-      <Ul>
-        {[...Array(20)].map((_, i) => (
-          <Item>
-            <h3>{`Item ${i + 1}`}</h3>
-            <span>{`price: $${i * 20}`}</span>
-          </Item>
-        ))}
-      </Ul>
+      <div>
+        {
+          (this.state.isLoading) ? <span>Loading</span> : ''
+        }
+        <input type="text" value={this.state.visibilityFilter} onChange={this.onChangeFilterHandler}/>
+        <Ul>
+          {filteredList.map(item => (
+            <Item key={item.id}>
+              <h3>{item.name}</h3>
+              <span>{`price: $${item.price}`}</span>
+            </Item>
+          ))}
+          {(filteredList.length === 0) ? <li>No matches</li>: ''}
+        </Ul>
+      </div>
     );
   }
 }
