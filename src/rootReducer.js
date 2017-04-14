@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
-
-const listReducer = (state = {}) => state;
+import itemsReducer from './ducks/listDucks';
 
 export default combineReducers({
-  list: listReducer,
+  cardList : itemsReducer
 });
