@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { removeFromCart } from '../ducks/listDucks';
+import { removeFromCart } from '../Ducks/listDucks';
 import { connect } from 'react-redux';
 
 class Cart extends Component {
@@ -11,7 +11,7 @@ class Cart extends Component {
           {
             this.props.itemsInCart.map(item => (
               <li key={item.id}>
-                <h3>{item.name} {`(${item.numOfItemsInCart})`}</h3>
+                <h3>{item.name} {(item.numOfItemsInCart > 1) ? `(${item.numOfItemsInCart})`: null}</h3>
                 <span>{`price: $${item.price}`}</span>
                 <button onClick={() => this.props.removeItem(item.id)}>Remove</button>
               </li>

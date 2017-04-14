@@ -1,8 +1,8 @@
 import React from 'react';
-import CartSummary from '../components/cartSummary'
-import SingleListItem from '../components/singleListItem'
-import Shop from '../components/shop'
-import Cart from '../components/cart'
+import CartSummary from '../Components/cartSummary'
+import SingleListItem from '../Components/singleListItem'
+import Shop from '../Components/shop'
+import Cart from '../Components/cart'
 import { Route } from 'react-router-dom'
 
 

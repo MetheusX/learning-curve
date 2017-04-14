@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { fetchItemData } from '../ducks/listDucks'
+import { fetchItemData } from '../Ducks/listDucks'
 import styled from 'styled-components'
 
 
