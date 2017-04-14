@@ -80,13 +80,14 @@ export default (state = initialState, action) => {
         itemsInCart : {...state.itemsInCart}
       }
     case REMOVE_FROM_CART:
-      let nextStateItemsInCart = {...state.itemsInCart};
-      const cartItemToRemove = nextStateItemsInCart[action.payload];
+      let nextStateItemsInCart;
 
-      if(cartItemToRemove.numOfItemsInCart > 1){
-        cartItemToRemove.numOfItemsInCart--;
+      if(state.itemsInCart[action.payload].numOfItemsInCart > 1){
+        nextStateItemsInCart = {...state.itemsInCart};
+        nextStateItemsInCart[action.payload].numOfItemsInCart--;
       }else{
-        nextStateItemsInCart = removeObjKey(nextStateItemsInCart, action.payload)
+        //return new obj
+        nextStateItemsInCart = removeObjKey(state.itemsInCart, action.payload)
       }
 
       return {
