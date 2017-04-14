@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom'
-import { setVisibilityFilter, fetchListData, addToCart} from '../Ducks/listDucks';
+import { setVisibilityFilter, fetchListData, addToCart} from '../ducks/listDucks';
 import { connect } from 'react-redux'
 
 const StyledButton = styled.button`

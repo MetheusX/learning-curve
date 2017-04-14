@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import ShopContainer from './Containers/shopContainer';
-import Navigation from './Components/navigation';
+import ShopContainer from './containers/ShopContainer';
+import Navigation from './components/Navigation';
 import { Route } from 'react-router-dom'
 
 const Wrapper = styled.div`
