@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { fetchItemData } from '../ducks/listDucks'
+import {
+  loadingSelector,
+  selectedItemsSelector,
+  getItemByURLParamSelector
+} from '../selectors/shopSelector';
 
 class SingleItem extends Component{
   componentDidMount() {
@@ -41,11 +46,9 @@ class SingleItem extends Component{
 
 //what keys should be taken from the state for this component
 const mapStateToProps = (state, ownProps) => ({
-  itemsInCart : state.cardList.itemsInCart,
-  item : state.cardList.items.find((item) => {
-    return ownProps.match.params.itemId === item.id
-  }),
-  isLoading : state.cardList.isLoading
+  itemsInCart : selectedItemsSelector(state),
+  item : getItemByURLParamSelector(state, ownProps),
+  isLoading : loadingSelector(state)
 });
 
 //action creators mapped to props

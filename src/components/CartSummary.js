@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { numOfItemsInCarSelector, totalPriceOfCartSelector } from '../selectors/shopSelector';
+import {
+  numOfItemsInCarSelector,
+  totalPriceOfCartSelector
+} from '../selectors/shopSelector';
 
 const SVG_URL = 'https://image.flaticon.com/icons/svg/2/2772.svg';
 const SVGWrapper = styled.div`

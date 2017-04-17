@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom'
-import { setVisibilityFilter, fetchListData, addToCart} from '../ducks/listDucks';
+import {
+  setVisibilityFilter,
+  fetchListData,
+  addToCart
+} from '../ducks/listDucks';
 import { connect } from 'react-redux'
+import {
+  loadingSelector,
+  selectedItemsSelector,
+  filteredListSelector
+} from '../selectors/shopSelector';
+
 
 const StyledButton = styled.button`
   background-color: ${props => props.isActive ? props.theme.secondary : props.theme.primary}
@@ -61,11 +71,9 @@ class List extends Component {
 
 //what keys should be taken from the state for this component
 const mapStateToProps = (state) => ({
-  items : state.cardList.items.filter(item =>
-    item.name.indexOf(state.cardList.visibilityFilter) !== -1
-  ),
-  itemsInCart : state.cardList.itemsInCart,
-  isLoading : state.cardList.isLoading
+  items : filteredListSelector(state),
+  itemsInCart : selectedItemsSelector(state),
+  isLoading : loadingSelector(state)
 });
 
 //action creators mapped to props
