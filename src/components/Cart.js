@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { removeFromCart } from '../ducks/listDucks';
 import { connect } from 'react-redux';
+import { totalSelectedItemsDataSelector } from '../selectors/shopSelector';
 
 class Cart extends Component {
   render() {
@@ -23,23 +24,13 @@ class Cart extends Component {
   }
 }
 
-const getItemById = (items, id) => (
-  items.find(item => item.id === id)
-)
-
 //what keys should be taken from the state for this component
 const mapStateToProps = (state) => ({
-  itemsInCart : Object.keys(state.cardList.itemsInCart).map(itemId => {
-    const itemData = getItemById(state.cardList.items, itemId);
-    return {
-      ...itemData,
-      ...state.cardList.itemsInCart[itemId]
-    }
-  })
+  itemsInCart : totalSelectedItemsDataSelector(state)
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  removeItem :  (itemId) => dispatch(removeFromCart(itemId))
+  removeItem :  itemId => dispatch(removeFromCart(itemId))
 })
 
 //association between action creators and state

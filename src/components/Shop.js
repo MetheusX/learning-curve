@@ -40,7 +40,7 @@ class List extends Component {
         {
           this.props.isLoading && <span>Loading</span>
         }
-        <input type="text" value={this.props.visibilityFilter} onChange={this.onChangeFilterHandler}/>
+        <input type="text" onChange={this.onChangeFilterHandler}/>
         <Ul>
           {this.props.items.map(item => (
             <Item key={item.id}>
@@ -65,7 +65,6 @@ const mapStateToProps = (state) => ({
     item.name.indexOf(state.cardList.visibilityFilter) !== -1
   ),
   itemsInCart : state.cardList.itemsInCart,
-  visibilityFilter : state.cardList.visibilityFilter,
   isLoading : state.cardList.isLoading
 });
 

@@ -86,7 +86,7 @@ export default (state = initialState, action) => {
         nextStateItemsInCart = {...state.itemsInCart};
         nextStateItemsInCart[action.payload].numOfItemsInCart--;
       }else{
-        //return new obj
+        //returns new obj
         nextStateItemsInCart = removeObjKey(state.itemsInCart, action.payload)
       }
 

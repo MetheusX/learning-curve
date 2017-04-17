@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { numOfItemsInCarSelector, totalPriceOfCartSelector } from '../selectors/shopSelector';
 
 const SVG_URL = 'https://image.flaticon.com/icons/svg/2/2772.svg';
 const SVGWrapper = styled.div`
@@ -39,19 +40,10 @@ class CartSummary extends Component {
   }
 }
 
-const getItemById = (items, id) => {
-  return items.find(item => item.id === id);
-}
-
 //what keys should be taken from the state for this component
 const mapStateToProps = (state) => ({
-  totalPrice : Object.keys(state.cardList.itemsInCart).reduce((acc, id) => {
-    const itemsInCart = state.cardList.itemsInCart;
-    const items = state.cardList.items;
-
-    return acc = acc + itemsInCart[id].numOfItemsInCart * getItemById(items, id).price
-  }, 0),
-  totalNumOfItems : Object.keys(state.cardList.itemsInCart).length,
+  totalPrice : totalPriceOfCartSelector(state),
+  totalNumOfItems : numOfItemsInCarSelector(state),
 });
 
 //association between action creators and state

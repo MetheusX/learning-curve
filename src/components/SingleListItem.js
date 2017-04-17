@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { fetchItemData } from '../ducks/listDucks'
-import styled from 'styled-components'
-
-
-const StyledCard = styled.div`
-
-`
 
 class SingleItem extends Component{
   componentDidMount() {
@@ -27,7 +21,7 @@ class SingleItem extends Component{
     }else{
       return (
         <div>
-          <StyledCard>
+          <div>
             <div>{this.props.item.name}</div>
             <div>{this.props.item.price}</div>
             <div>
@@ -38,7 +32,7 @@ class SingleItem extends Component{
                 :
                 " No"}
             </div>
-          </StyledCard>
+          </div>
         </div>
       )
     }
@@ -48,7 +42,6 @@ class SingleItem extends Component{
 //what keys should be taken from the state for this component
 const mapStateToProps = (state, ownProps) => ({
   itemsInCart : state.cardList.itemsInCart,
-  // items : state.cardList.items,
   item : state.cardList.items.find((item) => {
     return ownProps.match.params.itemId === item.id
   }),
@@ -57,8 +50,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 //action creators mapped to props
 const mapDispatchToProps = (dispatch) => ({
-  fetchItem : itemId => dispatch(fetchItemData(itemId)),
-  // removeItemFromCart : itemId => dispatch(removeItemFromCart(itemId))
+  fetchItem : itemId => dispatch(fetchItemData(itemId))
 });
 
 //association between action creators and state
