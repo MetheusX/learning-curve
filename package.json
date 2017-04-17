@@ -1,6 +1,6 @@
 {
   "name": "learning-curve",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "dependencies": {
     "axios": "^0.16.1",
@@ -10,6 +10,7 @@
     "react-router-dom": "^4.1.1",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.0",
     "styled-components": "^1.4.4"
   },
   "devDependencies": {
