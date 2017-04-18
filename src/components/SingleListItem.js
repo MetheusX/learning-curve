@@ -52,14 +52,12 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 //action creators mapped to props
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   fetchItem : itemId => dispatch(fetchItemData(itemId))
 });
 
 //association between action creators and state
-const SingleListItem = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(SingleItem)
-
-export default SingleListItem

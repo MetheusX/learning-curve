@@ -70,23 +70,21 @@ class List extends Component {
 }
 
 //what keys should be taken from the state for this component
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   items : filteredListSelector(state),
   itemsInCart : selectedItemsSelector(state),
   isLoading : loadingSelector(state)
 });
 
 //action creators mapped to props
-const mapDispatchToProps = (dispatch) => ({
-  setVisibilityFilter :  (filter) => dispatch(setVisibilityFilter(filter)),
+const mapDispatchToProps = dispatch => ({
+  setVisibilityFilter :  filter => dispatch(setVisibilityFilter(filter)),
   fetchListData : () => dispatch(fetchListData()),
-  addToCart : (id) => dispatch(addToCart(id))
+  addToCart : id => dispatch(addToCart(id))
 });
 
 //association between action creators and state
-const Shop = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(List)
-
-export default Shop

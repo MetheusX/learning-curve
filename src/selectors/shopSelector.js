@@ -24,9 +24,9 @@ export const totalPriceOfCartSelector = createSelector(
   selectedItemsSelector,
   itemSelector,
   (itemsInCart, items) => (
-    Object.keys(itemsInCart).reduce((acc, id) => {
-      return acc = acc + itemsInCart[id].numOfItemsInCart * getItemById(items, id).price
-    }, 0)
+    Object.keys(itemsInCart).reduce((acc, id) => (
+      acc + itemsInCart[id].numOfItemsInCart * getItemById(items, id).price
+    ), 0)
   )
 );
 
@@ -44,9 +44,9 @@ export const totalSelectedItemsDataSelector = createSelector(
 export const filteredListSelector = createSelector(
   itemSelector,
   visibilityFilterSelector,
-  (items, filter) => {
-    return items.filter(item =>
+  (items, filter) => (
+    items.filter(item =>
       item.name.indexOf(filter) !== -1
     )
-  }
+  )
 )

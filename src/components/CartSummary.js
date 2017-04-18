@@ -44,15 +44,13 @@ class CartSummary extends Component {
 }
 
 //what keys should be taken from the state for this component
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   totalPrice : totalPriceOfCartSelector(state),
   totalNumOfItems : numOfItemsInCarSelector(state),
 });
 
 //association between action creators and state
-CartSummary = connect(
+export default connect(
   mapStateToProps,
   {}
 )(CartSummary)
-
-export default CartSummary
