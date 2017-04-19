@@ -1,15 +1,15 @@
 import { createSelector } from 'reselect'
 
+const idFromURLSelector = (_, props) => props.match.params.itemId;
 export const loadingSelector = state => state.cardList.isLoading;
 export const selectedItemsSelector = state => state.cardList.itemsInCart;
 export const itemSelector = state => state.cardList.items;
 export const visibilityFilterSelector = state => state.cardList.visibilityFilter;
 
-export const getItemByURLParamSelector = (state, props) => {
-  return state.cardList.items.find((item) => {
-    return props.match.params.itemId === item.id
-  })
-};
+export const getItemByURLParamSelector = createSelector(
+  [itemSelector, idFromURLSelector],
+  (items, id) => items.find(item  => item.id === id),
+);
 
 export const numOfItemsInCarSelector = createSelector(
   selectedItemsSelector,

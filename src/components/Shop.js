@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom'
 import {
   setVisibilityFilter,
-  fetchListData,
+  requestListData,
   addToCart
 } from '../ducks/listDucks';
 import { connect } from 'react-redux'
@@ -79,7 +79,7 @@ const mapStateToProps = state => ({
 //action creators mapped to props
 const mapDispatchToProps = dispatch => ({
   setVisibilityFilter :  filter => dispatch(setVisibilityFilter(filter)),
-  fetchListData : () => dispatch(fetchListData()),
+  fetchListData : () => dispatch(requestListData()),
   addToCart : id => dispatch(addToCart(id))
 });
 

@@ -1,4 +1,4 @@
-import { fetchItems, fetchItem } from '../api';
+// import { fetchItems, fetchItem } from '../api';
 import { removeObjKey } from '../util'
 
 //action types
@@ -20,11 +20,12 @@ export const recievedListData = data => ({
   payload : data
 });
 
-export const requestItemData = () => ({
-  type : REQUEST_ITEM_DATA
+export const requestItemData = id => ({
+  type : REQUEST_ITEM_DATA,
+  payload : id
 });
 
-export const recievedItemData = (data) => ({
+export const recievedItemData = data => ({
   type : RECIEVED_ITEM_DATA,
   payload : data
 });
@@ -39,25 +40,25 @@ export const addToCart = id => ({
   payload : id
 });
 
-export const removeFromCart = (itemId) => ({
+export const removeFromCart = itemId => ({
   type : REMOVE_FROM_CART,
   payload : itemId
 })
 
 //async thunk function
-export const fetchListData = () => (dispatch) => {
-  dispatch(requestListData()); //send request data action
-  fetchItems().then(response => {
-    dispatch(recievedListData(response.data));
-  })
-}
+// export const fetchListData = () => dispatch => {
+//   dispatch(requestListData()); //send request data action
+//   fetchItems().then(response => {
+//     dispatch(recievedListData(response.data));
+//   })
+// }
 
-export const fetchItemData = (itemId) => (dispatch) => {
-  dispatch(requestItemData()); //send request data action
-  fetchItem(itemId).then(response => {
-    dispatch(recievedItemData(response.data));
-  })
-}
+// export const fetchItemData = itemId => dispatch => {
+//   dispatch(requestItemData()); //send request data action
+//   fetchItem(itemId).then(response => {
+//     dispatch(recievedItemData(response.data));
+//   })
+// }
 
 //initial state
 const initialState = ({

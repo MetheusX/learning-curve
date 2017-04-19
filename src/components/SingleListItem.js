@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { fetchItemData } from '../ducks/listDucks'
+import { requestItemData } from '../ducks/listDucks'
 import {
   loadingSelector,
   selectedItemsSelector,
@@ -53,7 +53,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 //action creators mapped to props
 const mapDispatchToProps = dispatch => ({
-  fetchItem : itemId => dispatch(fetchItemData(itemId))
+  fetchItem : itemId => dispatch(requestItemData(itemId))
 });
 
 //association between action creators and state
