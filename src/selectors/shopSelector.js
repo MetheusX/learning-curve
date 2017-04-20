@@ -1,10 +1,10 @@
 import { createSelector } from 'reselect'
 
 const idFromURLSelector = (_, props) => props.match.params.itemId;
-export const loadingSelector = state => state.cardList.isLoading;
-export const selectedItemsSelector = state => state.cardList.itemsInCart;
-export const itemSelector = state => state.cardList.items;
-export const visibilityFilterSelector = state => state.cardList.visibilityFilter;
+export const loadingSelector = state => state.shop.isLoading;
+export const selectedItemsSelector = state => state.shop.itemsInCart;
+export const itemSelector = state => state.shop.items;
+export const visibilityFilterSelector = state => state.shop.visibilityFilter;
 
 export const getItemByURLParamSelector = createSelector(
   [itemSelector, idFromURLSelector],

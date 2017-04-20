@@ -45,21 +45,6 @@ export const removeFromCart = itemId => ({
   payload : itemId
 })
 
-//async thunk function
-// export const fetchListData = () => dispatch => {
-//   dispatch(requestListData()); //send request data action
-//   fetchItems().then(response => {
-//     dispatch(recievedListData(response.data));
-//   })
-// }
-
-// export const fetchItemData = itemId => dispatch => {
-//   dispatch(requestItemData()); //send request data action
-//   fetchItem(itemId).then(response => {
-//     dispatch(recievedItemData(response.data));
-//   })
-// }
-
 //initial state
 const initialState = ({
   visibilityFilter : '',

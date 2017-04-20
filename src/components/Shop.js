@@ -12,10 +12,15 @@ import {
   selectedItemsSelector,
   filteredListSelector
 } from '../selectors/shopSelector';
+import { errorLevels } from './Errors'
+import { showNotification } from '../ducks/notificationsDucks';
+
 
 
 const StyledButton = styled.button`
-  background-color: ${props => props.isActive ? props.theme.secondary : props.theme.primary}
+  background-color: ${
+    props => props.isActive ? props.theme.secondary : props.theme.primary
+  }
 `;
 
 const Ul = styled.ul`
@@ -51,6 +56,15 @@ class List extends Component {
           this.props.isLoading && <span>Loading</span>
         }
         <input type="text" onChange={this.onChangeFilterHandler}/>
+        <button onClick={
+          () => this.props.showNotification("Critical Msg", errorLevels.CRITICAL)}>Simulate Critical Error
+        </button>
+        <button onClick={
+          () => this.props.showNotification("Warning Msg",errorLevels.WARNING)}>Simulate Warning Error
+        </button>
+        <button onClick={
+          () => this.props.showNotification("Info Msg", errorLevels.INFO)}>Simulate Info Error
+        </button>
         <Ul>
           {this.props.items.map(item => (
             <Item key={item.id}>
@@ -80,7 +94,13 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   setVisibilityFilter :  filter => dispatch(setVisibilityFilter(filter)),
   fetchListData : () => dispatch(requestListData()),
-  addToCart : id => dispatch(addToCart(id))
+  addToCart : id => dispatch(addToCart(id)),
+  showNotification : (msg, level) => dispatch(showNotification({
+    msg : msg,
+    level : errorLevels[level],
+    isViewable : true,
+    id : Date.now()
+  }))
 });
 
 //association between action creators and state

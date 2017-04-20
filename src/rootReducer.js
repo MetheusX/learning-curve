@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import itemsReducer from './ducks/listDucks';
+import shopReducer from './ducks/listDucks';
+import notificationsReducer from './ducks/notificationsDucks';
 
 export default combineReducers({
-  cardList : itemsReducer
+  shop : shopReducer,
+  notifications : notificationsReducer
 });

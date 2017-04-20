@@ -3,6 +3,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import ShopContainer from './containers/ShopContainer';
 import Navigation from './components/Navigation';
 import { Route } from 'react-router-dom'
+import NotificationSystem from './components/Errors';
 
 const Wrapper = styled.div`
   max-width: 960px;
@@ -12,7 +13,12 @@ const Wrapper = styled.div`
 
 const theme = {
   primary : '#6E7F80',
-  secondary : '#FA6E79'
+  secondary : '#FA6E79',
+  notification : {
+    critical : '#DD4E56',
+    info : '#A0CFE4',
+    warning : '#F4D14D'
+  }
 };
 
 const Home = () =>{
@@ -39,6 +45,7 @@ export default function App() {
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
         <Route path="/shop" component={ShopContainer} />
+        <NotificationSystem />
       </Wrapper>
     </ThemeProvider>
   );
